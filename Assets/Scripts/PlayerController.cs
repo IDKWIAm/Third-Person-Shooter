@@ -1,49 +1,35 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using TMPro.EditorUtilities;
-using UnityEngine;
-using UnityEngine.Windows.Speech;
+﻿using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public RuntimeAnimatorController animatorController;
+
     public float gravity = 9.8f;
     public float jumpForce = 10f;
     public float speed = 10f;
 
     private Vector3 _moveVector;
     private float _fallVelocity = 0f;
+    private bool isRunning = false;
 
+    private Animator _animator;
     private CharacterController _characterController;
 
 
     void Start()
     {
-        _characterController = GetComponent<CharacterController>();
+        InitAnimator();
+        InitCharacterController();
+        LockCursor();
     }
     private void Update()
     {
-        _moveVector = Vector3.zero;
-
-        if (Input.GetKey(KeyCode.W))
-        {
-            _moveVector += transform.forward;
-        }
-        if (Input.GetKey(KeyCode.S))
-        {
-            _moveVector -= transform.forward;
-        }
-        if (Input.GetKey(KeyCode.D))
-        {
-            _moveVector += transform.right;
-        }
-        if (Input.GetKey(KeyCode.A))
-        {
-            _moveVector -= transform.right;
-        }
+        Move();
 
         if (Input.GetKeyDown(KeyCode.Space) && _characterController.isGrounded)
-            _fallVelocity = -jumpForce;
-
+        {
+            Jump();
+        }
     }
     void FixedUpdate()
     {
@@ -54,5 +40,70 @@ public class PlayerController : MonoBehaviour
 
         if (_characterController.isGrounded)
             _fallVelocity = 0;
+    }
+
+    private void InitAnimator()
+    {
+        if (transform.childCount == 0) return;
+        var child = transform.GetChild(0).gameObject;
+
+        _animator = child.GetComponent<Animator>();
+        if (!_animator)
+            _animator = child.AddComponent<Animator>();
+
+        _animator.runtimeAnimatorController = animatorController;
+    }
+
+    private void InitCharacterController()
+    {
+        _characterController = GetComponent<CharacterController>();
+    }
+
+    private void Move()
+    {
+        _moveVector = Vector3.zero;
+
+        isRunning = false;
+
+        if (Input.GetKey(KeyCode.W))
+        {
+            _moveVector += transform.forward;
+            _animator?.SetBool("isRunning", true);
+            isRunning = true;
+        }
+        if (Input.GetKey(KeyCode.S))
+        {
+            _moveVector -= transform.forward;
+            _animator?.SetBool("isRunning", true);
+            isRunning = true;
+        }
+        if (Input.GetKey(KeyCode.D))
+        {
+            _moveVector += transform.right;
+            _animator?.SetBool("isRunning", true);
+            isRunning = true;
+        }
+        if (Input.GetKey(KeyCode.A))
+        {
+            _moveVector -= transform.right;
+            _animator?.SetBool("isRunning", true);
+            isRunning = true;
+        }
+        
+        if (!isRunning)
+        {
+            _animator?.SetBool("isRunning", false);
+        }
+    }
+
+    private void Jump()
+    {
+        _fallVelocity = -jumpForce;
+        _animator?.SetTrigger("Jump");
+    }
+
+    private void LockCursor()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
     }
 }
