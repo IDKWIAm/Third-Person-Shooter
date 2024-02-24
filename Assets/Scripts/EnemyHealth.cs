@@ -3,10 +3,6 @@
 public class EnemyHealth : MonoBehaviour
 {
     public float health = 100;
-    void Start()
-    {
-        
-    }
 
     public void DealDamage(float damage)
     {

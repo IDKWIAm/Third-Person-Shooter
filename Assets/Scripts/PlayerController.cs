@@ -64,29 +64,39 @@ public class PlayerController : MonoBehaviour
         _moveVector = Vector3.zero;
 
         isRunning = false;
+        _animator?.SetFloat("X", 0);
+        _animator?.SetFloat("Y", 0);
 
         if (Input.GetKey(KeyCode.W))
         {
             _moveVector += transform.forward;
             _animator?.SetBool("isRunning", true);
+            _animator?.SetFloat("X", 0);
+            _animator?.SetFloat("Y", 1);
             isRunning = true;
         }
         if (Input.GetKey(KeyCode.S))
         {
             _moveVector -= transform.forward;
             _animator?.SetBool("isRunning", true);
+            _animator?.SetFloat("X", 0);
+            _animator?.SetFloat("Y", -1);
             isRunning = true;
         }
         if (Input.GetKey(KeyCode.D))
         {
             _moveVector += transform.right;
             _animator?.SetBool("isRunning", true);
+            _animator?.SetFloat("X", 1);
+            _animator?.SetFloat("Y", 0);
             isRunning = true;
         }
         if (Input.GetKey(KeyCode.A))
         {
             _moveVector -= transform.right;
             _animator?.SetBool("isRunning", true);
+            _animator?.SetFloat("X", -1);
+            _animator?.SetFloat("Y", 0);
             isRunning = true;
         }
         
@@ -105,5 +115,6 @@ public class PlayerController : MonoBehaviour
     private void LockCursor()
     {
         Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 }
