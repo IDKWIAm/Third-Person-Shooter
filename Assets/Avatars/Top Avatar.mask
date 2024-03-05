@@ -6,8 +6,8 @@ AvatarMask:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: New Avatar Mask
-  m_Mask: 01000000000000000000000001000000010000000000000000000000000000000000000001000000010000000100000001000000
+  m_Name: Top Avatar
+  m_Mask: 00000000010000000100000000000000000000000100000001000000010000000100000000000000000000000100000001000000
   m_Elements:
   - m_Path: 
     m_Weight: 1
@@ -116,24 +116,24 @@ AvatarMask:
   - m_Path: Hips/Spine/Chest/Shoulder_Right/UpperArm_Right/LowerArm_Right/Hand_Right/Thumb_Proximal_Right/Thumb_Intermediate_Right/Thumb_Distal_Right
     m_Weight: 1
   - m_Path: Hips/UpperLeg_Left
-    m_Weight: 1
+    m_Weight: 0
   - m_Path: Hips/UpperLeg_Left/LowerLeg_Left
-    m_Weight: 1
+    m_Weight: 0
   - m_Path: Hips/UpperLeg_Left/LowerLeg_Left/Foot_Left
-    m_Weight: 1
+    m_Weight: 0
   - m_Path: Hips/UpperLeg_Left/LowerLeg_Left/Foot_Left/Toe_Left
-    m_Weight: 1
+    m_Weight: 0
   - m_Path: Hips/UpperLeg_Left/LowerLeg_Left/Foot_Left/Toe_Left/Toetip_Left
-    m_Weight: 1
+    m_Weight: 0
   - m_Path: Hips/UpperLeg_Right
-    m_Weight: 1
+    m_Weight: 0
   - m_Path: Hips/UpperLeg_Right/LowerLeg_Right
-    m_Weight: 1
+    m_Weight: 0
   - m_Path: Hips/UpperLeg_Right/LowerLeg_Right/Foot_Right
-    m_Weight: 1
+    m_Weight: 0
   - m_Path: Hips/UpperLeg_Right/LowerLeg_Right/Foot_Right/Toe_Right
-    m_Weight: 1
+    m_Weight: 0
   - m_Path: Hips/UpperLeg_Right/LowerLeg_Right/Foot_Right/Toe_Right/Toetip_Right
-    m_Weight: 1
+    m_Weight: 0
   - m_Path: Leg1
-    m_Weight: 1
+    m_Weight: 0
