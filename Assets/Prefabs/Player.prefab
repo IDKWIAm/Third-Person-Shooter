@@ -732,7 +732,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   force: 750
-  grenadePrefab: {fileID: -9115418023441012512, guid: e95280baea925b64b831f0067d39af77,
+  grenadePrefab: {fileID: 4967660988741341863, guid: 72fc70d486e803746a7a62a2e0112379,
     type: 3}
   grenadeSourceTransform: {fileID: 8496837244835733062}
 --- !u!1 &6696492905081329744
