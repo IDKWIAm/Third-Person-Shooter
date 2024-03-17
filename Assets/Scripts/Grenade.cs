@@ -13,7 +13,7 @@ public class Grenade : MonoBehaviour
 
     private void Explosion()
     {
-        Destroy(gameObject.transform.parent.gameObject);
+        Destroy(gameObject);
 
         var explosion = Instantiate(explosionPrefab);
         explosion.transform.position = transform.position;

@@ -11,7 +11,7 @@ public class Aidkit : MonoBehaviour
         if (playerHealth != null)
         {
             playerHealth.AddHealth(healAmount);
-            Destroy(gameObject.transform.parent.parent.gameObject);
+            Destroy(gameObject);
         }
     }
 }

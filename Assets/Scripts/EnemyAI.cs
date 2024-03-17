@@ -10,14 +10,22 @@ public class EnemyAI : MonoBehaviour
     public PlayerController player;
     public Transform bulletSource;
     public GameObject bulletPrefab;
+
     public float viewAngle = 360;
-    public float damage = 30;
     public float rotationSpeed = 5f;
     public float FireRate = 0.5f;
+    public float waitingTime = 0f;
+    public float attackRange = 20f;
+    public float walkSpeed = 1.5f;
+    public float runSpeed = 3.5f;
+    public bool isGuard;
+    public bool isPatrolman = true;
 
     private int point;
     private bool _isPlayerNoticed;
+    private bool _isWaiting;
     private float _timer;
+
     private PlayerHealth _playerHealth;
     private NavMeshAgent _navMeshAgent;
     private Animator _childAnim;
@@ -48,6 +56,8 @@ public class EnemyAI : MonoBehaviour
     private void PickNewPatrolPoint()
     {
         point = Random.Range(0, patrolPoints.Count);
+        _navMeshAgent.speed = walkSpeed;
+        Invoke("DisableWaiting", 2);
     }
 
     private void NoticePlayerUpdate()
@@ -58,11 +68,11 @@ public class EnemyAI : MonoBehaviour
         if (_playerHealth.health <= 0) return;
 
         var direction = player.transform.position - transform.position;
-
+        
         if (Vector3.Angle(transform.forward, direction) < viewAngle)
         {
             RaycastHit hit;
-            if (Physics.Raycast(transform.position + Vector3.up, direction, out hit))
+            if (Physics.Raycast(transform.position + Vector3.up * 1.5f, direction, out hit))
             {
                 if (hit.collider.gameObject == player.gameObject)
                 {
@@ -75,7 +85,7 @@ public class EnemyAI : MonoBehaviour
 
     private void ChaseUpdate()
     {
-        if (_isPlayerNoticed)
+        if (_isPlayerNoticed && !isGuard)
         {
             _navMeshAgent.destination = player.transform.position;
         }
@@ -89,7 +99,15 @@ public class EnemyAI : MonoBehaviour
     {
         if (_navMeshAgent.remainingDistance <= _navMeshAgent.stoppingDistance)
         {
-            PickNewPatrolPoint();
+            if (!_isWaiting)
+            {
+                _navMeshAgent.speed = 0f;
+                _isWaiting = true;
+                if (isPatrolman)
+                {
+                    Invoke("PickNewPatrolPoint", waitingTime);
+                }
+            }
         }
     }
 
@@ -103,7 +121,7 @@ public class EnemyAI : MonoBehaviour
 
             var distance = heading.magnitude;
 
-            if (distance <= _navMeshAgent.stoppingDistance)
+            if (distance <= attackRange)
             {
                 Vector3 direction = (player.transform.position - transform.position).normalized;
                 Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
@@ -119,14 +137,17 @@ public class EnemyAI : MonoBehaviour
                     _timer = FireRate;
                 }
             }
-            else
+            else if (!isGuard)
             {
-                _navMeshAgent.speed = 3.5f;
+                _navMeshAgent.speed = runSpeed;
             }
         }
         else
         {
-            _navMeshAgent.speed = 1.5f;
+            if (!_isWaiting)
+            {
+                _navMeshAgent.speed = walkSpeed;
+            }
         }
     }
 
@@ -148,5 +169,10 @@ public class EnemyAI : MonoBehaviour
     {
         Instantiate(bulletPrefab, bulletSource.position, bulletSource.rotation);
         _childAnim?.SetTrigger("Attack");
+    }
+
+    private void DisableWaiting()
+    {
+        _isWaiting = false;
     }
 }

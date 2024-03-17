@@ -13,8 +13,8 @@ public class PlayerHealth : MonoBehaviour
     private float _lerpValue;
     private float _maxHealth;
     private bool _dead;
-    private bool _lerpIncrease;
-    private bool _lerpDecrease;
+    //private bool _lerpIncrease;
+    //private bool _lerpDecrease;
 
     private Animator _childAnim;
 
@@ -55,7 +55,7 @@ public class PlayerHealth : MonoBehaviour
         {
             PlayerIsDead();
         }
-        _lerpDecrease = true;
+        //_lerpDecrease = true;
         DrawHealthBar(damage);
     }
 
@@ -63,7 +63,7 @@ public class PlayerHealth : MonoBehaviour
     {
         health += healAmount;
         health = Mathf.Clamp(health, 0, _maxHealth);
-        _lerpIncrease = true;
+        //_lerpIncrease = true;
         DrawHealthBar(healAmount);
     }
 
