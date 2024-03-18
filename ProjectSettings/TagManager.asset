@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Instance
   - Door
+  - Entity
   layers:
   - Default
   - TransparentFX

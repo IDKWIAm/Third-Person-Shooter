@@ -44,7 +44,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 6696492904900342990, guid: 94f8d97b60897bf4c8a1a617a768f30d, type: 3}
+  offsetX: 0
   offsetY: 1
+  offsetZ: 0
+  xAxisOffset: 0
+  yAxisOffset: 0
+  zAxisOffset: 0
 --- !u!1 &6176086246729340478
 GameObject:
   m_ObjectHideFlags: 0
@@ -132,7 +137,7 @@ MonoBehaviour:
   - {fileID: 0}
   player: {fileID: 6696492904900342992, guid: 94f8d97b60897bf4c8a1a617a768f30d, type: 3}
   bulletSource: {fileID: 3467978453814280715}
-  bulletPrefab: {fileID: 8196102734009898756, guid: 9d7a8c0570a243b498c0cb9f9942153c,
+  bulletPrefab: {fileID: 8196102734009898756, guid: 1a09e58505035a040a87cf9da7e267fe,
     type: 3}
   viewAngle: 90
   rotationSpeed: 5

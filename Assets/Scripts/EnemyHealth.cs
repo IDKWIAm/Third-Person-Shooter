@@ -3,18 +3,30 @@ using UnityEngine.AI;
 
 public class EnemyHealth : MonoBehaviour
 {
+    public EnemyCounter enemyCounter;
+
     public float health = 100;
+    public bool needToKill;
 
     private Animator _enemyAnimator;
 
     private void Start()
     {
         InitAnimator();
+        AddEnemyToCounter();
     }
 
     private void InitAnimator()
     {
         _enemyAnimator = transform.GetChild(0).GetComponent<Animator>();
+    }
+
+    private void AddEnemyToCounter()
+    {
+        if (needToKill)
+        {
+            enemyCounter.AddEnemy();
+        }
     }
 
     public void DealDamage(float damage)
@@ -26,6 +38,11 @@ public class EnemyHealth : MonoBehaviour
             GetComponent<EnemyAI>().enabled = false;
             GetComponent<NavMeshAgent>().enabled = false;
             GetComponent<CapsuleCollider>().enabled = false;
+
+            if (needToKill)
+            {
+                enemyCounter.AddCount();
+            }
         }
         else
         {

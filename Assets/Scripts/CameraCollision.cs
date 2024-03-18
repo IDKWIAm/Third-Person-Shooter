@@ -2,16 +2,15 @@
 
 public class CameraCollision : MonoBehaviour
 {
-    public float rayDistance;
-
     public Transform cameraAxis;
+    public Transform defaultCamPos;
 
     void Update()
     {
-        var ray = (transform.parent.position - cameraAxis.position).normalized;
+        var ray = defaultCamPos.position - cameraAxis.position;
 
         RaycastHit hit;
-        if (Physics.Raycast(cameraAxis.position + new Vector3(0, 1, 0), ray, out hit, rayDistance))
+        if (Physics.Raycast(cameraAxis.position + new Vector3(0, 1, 0), ray, out hit, ray.magnitude))
         {
 
             transform.position = hit.point;

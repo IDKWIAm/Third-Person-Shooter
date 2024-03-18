@@ -6,12 +6,12 @@ public class CharacterNearby : MonoBehaviour
 
     private void Start()
     {
-        _animator = gameObject.transform.parent.GetComponent<Animator>();
+        _animator = gameObject.transform.GetComponent<Animator>();
     }
 
     private void OnTriggerEnter(Collider col)
     {
-        if (col.gameObject.CompareTag("Player"))
+        if (col.gameObject.CompareTag("Entity"))
         {
             _animator?.SetBool("character_nearby", true);
         }
@@ -19,7 +19,7 @@ public class CharacterNearby : MonoBehaviour
 
     private void OnTriggerExit(Collider col)
     {
-        if (col.gameObject.CompareTag("Player"))
+        if (col.gameObject.CompareTag("Entity"))
         {
             _animator?.SetBool("character_nearby", false);
         }

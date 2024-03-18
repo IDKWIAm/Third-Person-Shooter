@@ -117,7 +117,7 @@ public class EnemyAI : MonoBehaviour
 
         if (_isPlayerNoticed)
         {
-            var heading = _player.transform.position - gameObject.transform.position;
+            var heading = _player.transform.position - transform.position;
 
             var distance = heading.magnitude;
 
