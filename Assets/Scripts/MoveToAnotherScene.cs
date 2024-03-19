@@ -3,23 +3,25 @@ using UnityEngine.SceneManagement;
 
 public class MoveToAnotherScene : MonoBehaviour
 {
-    public void MoveToMainMenu()
-    {
-        SceneManager.LoadScene("Main Menu");
-    }
+    public int scene;
 
-    public void MoveToGame()
+    public void Move()
     {
-        SceneManager.LoadScene("Main Scene");
-    }
-
-    public void MoveToEnd()
-    {
-        SceneManager.LoadScene("End");
-    }
-
-    public void Exit()
-    {
-        Application.Quit();
+        if (scene == 1)
+        {
+            SceneManager.LoadScene("Main Menu");
+        }
+        if (scene == 2)
+        {
+            SceneManager.LoadScene("Main Scene");
+        }
+        if (scene == 3)
+        {
+            SceneManager.LoadScene("End");
+        }
+        if (scene == 4)
+        {
+            Application.Quit();
+        }
     }
 }

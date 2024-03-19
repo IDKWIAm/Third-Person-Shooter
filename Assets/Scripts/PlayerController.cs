@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     public float runMultiplier = 1f;
 
     public Animator aimAnimator;
+    public GameObject pauseMenu;
 
     private Vector3 _moveVector;
     private float _fallVelocity = 0f;
@@ -32,6 +33,11 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && _characterController.isGrounded)
         {
             Jump();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            OpenPauseMenu();
         }
     }
     void FixedUpdate()
@@ -130,5 +136,16 @@ public class PlayerController : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+    }
+
+    private void OpenPauseMenu()
+    {
+        gameObject.GetComponent<PlayerController>().enabled = false;
+        gameObject.GetComponent<CameraRotation>().enabled = false;
+        gameObject.GetComponent<BulletCaster>().enabled = false;
+        gameObject.GetComponent<GrenadeCaster>().enabled = false;
+        pauseMenu.GetComponent<Animator>().SetTrigger("WindowAppear");
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
 }
