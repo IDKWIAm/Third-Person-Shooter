@@ -14,7 +14,7 @@ public class BulletCaster : MonoBehaviour
 
     private void Start()
     {
-        InitAnimators();
+        InitVariables();
     }
 
     void Update()
@@ -37,7 +37,7 @@ public class BulletCaster : MonoBehaviour
         Aiming();
     }
 
-    private void InitAnimators()
+    private void InitVariables()
     {
         if (transform.childCount == 0) return;
         var child = transform.GetChild(0).gameObject;
@@ -58,7 +58,6 @@ public class BulletCaster : MonoBehaviour
 
     private void Shoot()
     {
-        
         Instantiate(BulletPrefab, bulletSource.position, bulletSource.rotation);
     }
 }

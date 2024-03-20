@@ -77,7 +77,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   delay: 3
-  explosionPrefab: {fileID: 2023500896903643858, guid: 9aef19b721f24494bb057b10bb4fae72,
+  explosionPrefab: {fileID: 1050301447210486512, guid: 28fdf7e348a73e24fb872aaf8deaf9db,
     type: 3}
 --- !u!1001 &8754592868876194748
 PrefabInstance:
