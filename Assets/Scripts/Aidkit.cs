@@ -3,6 +3,7 @@
 public class Aidkit : MonoBehaviour
 {
     public float healAmount = 50f;
+    public AudioSource energyCellPickUpSound;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -10,6 +11,8 @@ public class Aidkit : MonoBehaviour
 
         if (playerHealth != null)
         {
+            energyCellPickUpSound.PlayOneShot(energyCellPickUpSound.clip);
+
             playerHealth.AddHealth(healAmount);
             Destroy(gameObject);
         }

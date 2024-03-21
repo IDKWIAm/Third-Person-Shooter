@@ -351,7 +351,7 @@ RectTransform:
   m_GameObject: {fileID: 1420209058579011902}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3.6498368, y: 3.6498368, z: 1.8249184}
+  m_LocalScale: {x: 16, y: 9, z: 1.8249184}
   m_Children: []
   m_Father: {fileID: 3809222372422983016}
   m_RootOrder: 5
@@ -1932,7 +1932,7 @@ MonoBehaviour:
   speed: 3
   runMultiplier: 2
   aimAnimator: {fileID: 7052807752024741606}
-  pauseMenu: {fileID: 0}
+  pauseMenu: {fileID: 1689204928962479612}
 --- !u!143 &6696492904900342995
 CharacterController:
   m_ObjectHideFlags: 0
@@ -1963,8 +1963,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72eecc08b355b984084511622ad5d1eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shotSoundVolume: 1
   fireRate: 0.08
-  BulletPrefab: {fileID: 8196102734009898766, guid: 9d7a8c0570a243b498c0cb9f9942153c,
+  BulletPrefab: {fileID: 6830616854723291047, guid: 5e487fd0bc9097d45a2c89e4b4518f42,
     type: 3}
   bulletSource: {fileID: 8695786755337154182}
   AimAnimator: {fileID: 7052807752024741606}
@@ -2026,9 +2027,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 5383aa1868173fe49ab125d901b596ee, type: 3}
+  m_audioClip: {fileID: 8300000, guid: a87b5fbd0505f7a4e9eedea68586d1a3, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.8
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -2124,7 +2125,9 @@ GameObject:
   - component: {fileID: 6696492905081329746}
   - component: {fileID: 6696492905081329747}
   - component: {fileID: 8391621330933078092}
-  m_Layer: 0
+  - component: {fileID: 7574984706505187215}
+  - component: {fileID: 4177623858255578989}
+  m_Layer: 8
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -2210,6 +2213,83 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cameraAxis: {fileID: 6696492905221917342}
   defaultCamPos: {fileID: 0}
+--- !u!114 &7574984706505187215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6696492905081329744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 948f4100a11a5c24981795d21301da5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  volumeTrigger: {fileID: 6696492905081329749}
+  volumeLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  stopNaNPropagation: 1
+  finalBlitToCameraTarget: 0
+  antialiasingMode: 0
+  temporalAntialiasing:
+    jitterSpread: 0.75
+    sharpness: 0.25
+    stationaryBlending: 0.95
+    motionBlending: 0.85
+  subpixelMorphologicalAntialiasing:
+    quality: 2
+  fastApproximateAntialiasing:
+    fastMode: 0
+    keepAlpha: 0
+  fog:
+    enabled: 1
+    excludeSkybox: 1
+  debugLayer:
+    lightMeter:
+      width: 512
+      height: 256
+      showCurves: 1
+    histogram:
+      width: 512
+      height: 256
+      channel: 3
+    waveform:
+      exposure: 0.12
+      height: 256
+    vectorscope:
+      size: 256
+      exposure: 0.12
+    overlaySettings:
+      linearDepth: 0
+      motionColorIntensity: 4
+      motionGridSize: 64
+      colorBlindnessType: 0
+      colorBlindnessStrength: 1
+  m_Resources: {fileID: 11400000, guid: d82512f9c8e5d4a4d938b575d47f88d4, type: 2}
+  m_ShowToolkit: 0
+  m_ShowCustomSorter: 0
+  breakBeforeColorGrading: 0
+  m_BeforeTransparentBundles: []
+  m_BeforeStackBundles: []
+  m_AfterStackBundles: []
+--- !u!114 &4177623858255578989
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6696492905081329744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sharedProfile: {fileID: 11400000, guid: 813a0d36cbf3efd4a99a2e4c4d89bb89, type: 2}
+  isGlobal: 1
+  blendDistance: 0
+  weight: 1
+  priority: 0
 --- !u!1 &6696492905221917343
 GameObject:
   m_ObjectHideFlags: 0

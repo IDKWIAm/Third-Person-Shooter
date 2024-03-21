@@ -30,6 +30,7 @@ public class EnemyAI : MonoBehaviour
     private NavMeshAgent _navMeshAgent;
     private Animator _childAnim;
     private GameObject _player;
+    private AudioSource _audioSource;
 
     void Start()
     {
@@ -51,11 +52,17 @@ public class EnemyAI : MonoBehaviour
         _playerHealth = player.gameObject.GetComponent<PlayerHealth>();
         _childAnim = transform.GetChild(0).GetComponent<Animator>();
         _navMeshAgent = GetComponent<NavMeshAgent>();
+        _audioSource = GetComponent<AudioSource>();
     }
 
     private void PickNewPatrolPoint()
     {
-        point = Random.Range(0, patrolPoints.Count);
+        var oldPoint = point;
+        while (point == oldPoint)
+        {
+            point = Random.Range(0, patrolPoints.Count);
+        }
+        
         _navMeshAgent.speed = walkSpeed;
         Invoke("DisableWaiting", 2);
     }
@@ -167,6 +174,7 @@ public class EnemyAI : MonoBehaviour
 
     private void Fire()
     {
+        _audioSource.PlayOneShot(_audioSource.clip, 0.6f);
         Instantiate(bulletPrefab, bulletSource.position, bulletSource.rotation);
         _childAnim?.SetTrigger("Attack");
     }

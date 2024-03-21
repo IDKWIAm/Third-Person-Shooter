@@ -2,6 +2,7 @@
 
 public class BulletCaster : MonoBehaviour
 {
+    public float shotSoundVolume = 1f;
     public float fireRate = 0.05f;
 
     public Bullet BulletPrefab;
@@ -10,6 +11,7 @@ public class BulletCaster : MonoBehaviour
 
     private float _timer;
 
+    private AudioSource _audioSource;
     private Animator _charAnimator;
 
     private void Start()
@@ -39,6 +41,8 @@ public class BulletCaster : MonoBehaviour
 
     private void InitVariables()
     {
+        _audioSource = GetComponent<AudioSource>();
+
         if (transform.childCount == 0) return;
         var child = transform.GetChild(0).gameObject;
 
@@ -58,6 +62,8 @@ public class BulletCaster : MonoBehaviour
 
     private void Shoot()
     {
-        Instantiate(BulletPrefab, bulletSource.position, bulletSource.rotation);
+        _audioSource.PlayOneShot(_audioSource.clip, shotSoundVolume);
+
+        var bullet = Instantiate(BulletPrefab, bulletSource.position, bulletSource.rotation);
     }
 }
