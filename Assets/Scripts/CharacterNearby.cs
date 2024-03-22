@@ -3,16 +3,19 @@
 public class CharacterNearby : MonoBehaviour
 {
     private Animator _animator;
+    private AudioSource _audioSource;
 
     private void Start()
     {
-        _animator = gameObject.transform.GetComponent<Animator>();
+        _audioSource = GetComponent<AudioSource>();
+        _animator = GetComponent<Animator>();
     }
 
     private void OnTriggerEnter(Collider col)
     {
         if (col.gameObject.CompareTag("Entity"))
         {
+            _audioSource.PlayOneShot(_audioSource.clip);
             _animator?.SetBool("character_nearby", true);
         }
     }
@@ -21,6 +24,7 @@ public class CharacterNearby : MonoBehaviour
     {
         if (col.gameObject.CompareTag("Entity"))
         {
+            _audioSource.PlayOneShot(_audioSource.clip);
             _animator?.SetBool("character_nearby", false);
         }
     }

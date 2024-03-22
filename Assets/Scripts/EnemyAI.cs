@@ -58,7 +58,7 @@ public class EnemyAI : MonoBehaviour
     private void PickNewPatrolPoint()
     {
         var oldPoint = point;
-        while (point == oldPoint)
+        while (isPatrolman && point == oldPoint)
         {
             point = Random.Range(0, patrolPoints.Count);
         }
