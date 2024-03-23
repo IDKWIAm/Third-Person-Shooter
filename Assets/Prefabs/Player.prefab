@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6495473312511979291}
   - component: {fileID: 5839671860719421046}
   - component: {fileID: 8154005754582226561}
+  - component: {fileID: 366786355205391478}
   m_Layer: 5
   m_Name: Resume Button
   m_TagString: Untagged
@@ -144,6 +145,51 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 6696492904900342991}
+--- !u!114 &366786355205391478
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 253963079953225542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 0}
+          m_MethodName: PlayOneShot
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 8300000, guid: eb53c7c8675e3e2488a935d6c1032983,
+              type: 3}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 2
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 0}
+          m_MethodName: PlayOneShot
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 8300000, guid: c987d7ebecfe818419e9ffa40e815d14,
+              type: 3}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &1132070916574715386
 GameObject:
   m_ObjectHideFlags: 0
@@ -1372,6 +1418,7 @@ GameObject:
   - component: {fileID: 8484554311427064793}
   - component: {fileID: 7944679656574775734}
   - component: {fileID: 2077281149563282491}
+  - component: {fileID: 5718061191493195562}
   m_Layer: 5
   m_Name: Main Menu Button
   m_TagString: Untagged
@@ -1490,6 +1537,51 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+--- !u!114 &5718061191493195562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4240000487722857029}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 0}
+          m_MethodName: PlayOneShot
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 8300000, guid: eb53c7c8675e3e2488a935d6c1032983,
+              type: 3}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 2
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 0}
+          m_MethodName: PlayOneShot
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 8300000, guid: c987d7ebecfe818419e9ffa40e815d14,
+              type: 3}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &5191209277150917633
 GameObject:
   m_ObjectHideFlags: 0
@@ -2350,6 +2442,9 @@ MonoBehaviour:
   runMultiplier: 2
   aimAnimator: {fileID: 7052807752024741606}
   pauseMenu: {fileID: 1689204928962479612}
+  wasdText: {fileID: 0}
+  runText: {fileID: 0}
+  interactText: {fileID: 0}
 --- !u!143 &6696492904900342995
 CharacterController:
   m_ObjectHideFlags: 0
@@ -2386,6 +2481,11 @@ MonoBehaviour:
     type: 3}
   bulletSource: {fileID: 8695786755337154182}
   AimAnimator: {fileID: 7052807752024741606}
+  aimText: {fileID: 0}
+  shootText: {fileID: 0}
+  pickUpText: {fileID: 0}
+  interactText: {fileID: 0}
+  grenadeCaster: {fileID: 0}
 --- !u!114 &8155931181046013680
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2398,11 +2498,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0934774d9e22a64288e3178893f6d39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 150
   health: 100
   valueRectTransform: {fileID: 1726239384134225197}
   gameplayUI: {fileID: 8721372625265566956}
   gameOverScreen: {fileID: 8657536662871107779}
-  lerpSpeed: 1
 --- !u!114 &7876959964858489299
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2420,6 +2520,11 @@ MonoBehaviour:
   grenadePrefab: {fileID: 4967660988741341863, guid: 72fc70d486e803746a7a62a2e0112379,
     type: 3}
   grenadeSourceTransform: {fileID: 8496837244835733062}
+  finishText: {fileID: 0}
+  throwGrenadeText: {fileID: 0}
+  pickUpText: {fileID: 0}
+  tutorialEnemy: {fileID: 0}
+  _pickUpTextShowed: 0
 --- !u!114 &6247899782505117187
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2916,7 +3021,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1530912688713056529}
   m_Layer: 0
-  m_Name: Target Point
+  m_Name: Player Target Point
   m_TagString: Untagged
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -8280,7 +8385,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7af5742775b162a4d9f312c58533de0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scene: 3
+  scene: 4
 --- !u!1 &9048815922964127974
 GameObject:
   m_ObjectHideFlags: 0

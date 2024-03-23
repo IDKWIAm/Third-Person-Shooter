@@ -10,6 +10,10 @@ public class EnemyCounter : MonoBehaviour
     public GameObject interactiveButton;
     public Animator taskManagerAnim;
 
+    public bool isTutorial;
+    public GameObject escapeText;
+    public GameObject finishText;
+
     private int enemiesAmount;
     private int counter;
 
@@ -26,11 +30,16 @@ public class EnemyCounter : MonoBehaviour
 
     private void CheckCount()
     {
-        if (counter >= enemiesAmount)
+        if (counter >= enemiesAmount && !isTutorial)
         {
             interactiveButton.SetActive(true);
             taskManagerAnim.SetTrigger("Completed");
             Invoke("SetText", 1.5f);
+        } else if (isTutorial)
+        {
+            finishText.SetActive(false);
+            escapeText.SetActive(true);
+
         }
     }
 

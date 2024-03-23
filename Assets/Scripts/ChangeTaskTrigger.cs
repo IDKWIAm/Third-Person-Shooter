@@ -10,6 +10,7 @@ public class ChangeTaskTrigger : MonoBehaviour
     public string message;
     public GameObject button;
     public Animator taskManagerAnim;
+    public GameObject gate;
 
     private bool _notTriggered = true;
 
@@ -17,6 +18,11 @@ public class ChangeTaskTrigger : MonoBehaviour
     {
         if (other.gameObject.name == "Player" && _notTriggered)
         {
+            if (gate != null)
+            {
+                gate.transform.localPosition -= new Vector3(22, 0, 0);
+            }
+
             taskManagerAnim.SetTrigger("Completed");
             Invoke("SetText", 1.5f);
 

@@ -12,12 +12,19 @@ public class PlayerController : MonoBehaviour
     public Animator aimAnimator;
     public GameObject pauseMenu;
 
+    public GameObject wasdText;
+    public GameObject runText;
+    public GameObject interactText;
+
     private Vector3 _moveVector;
     private float _fallVelocity = 0f;
     private bool isMoving = false;
 
     private Animator _charAnimator;
     private CharacterController _characterController;
+
+    private bool _walkTextChanged;
+    private bool _runTextChanged;
 
 
     void Start()
@@ -83,6 +90,13 @@ public class PlayerController : MonoBehaviour
             {
                 _moveVector += transform.forward * runMultiplier;
                 _charAnimator?.SetFloat("RunningOrNot", 1);
+
+                if (runText != null && !_runTextChanged)
+                {
+                    runText.SetActive(false);
+                    interactText.SetActive(true);
+                    _runTextChanged = true;
+                }
             }
             else
             {
@@ -123,6 +137,11 @@ public class PlayerController : MonoBehaviour
         if (!isMoving)
         {
             _charAnimator?.SetBool("isMoving", false);
+        } else if (wasdText != null && !_walkTextChanged)
+        {
+            wasdText.SetActive(false);
+            runText.SetActive(true);
+            _walkTextChanged = true;
         }
     }
 

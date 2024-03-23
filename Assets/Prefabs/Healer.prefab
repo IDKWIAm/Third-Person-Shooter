@@ -46,7 +46,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2171b821da46fab4f96cd47a7a86436a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healAmount: 50
+  healAmount: 60
+  energyCellPickUpSound: {fileID: 0}
 --- !u!136 &3493166562709252354
 CapsuleCollider:
   m_ObjectHideFlags: 0

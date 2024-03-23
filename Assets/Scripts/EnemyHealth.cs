@@ -4,9 +4,9 @@ using UnityEngine.AI;
 public class EnemyHealth : MonoBehaviour
 {
     public EnemyCounter enemyCounter;
+    public float addCountDelay;
 
     public float health = 100;
-    public bool needToKill;
 
     private Animator _enemyAnimator;
 
@@ -23,7 +23,7 @@ public class EnemyHealth : MonoBehaviour
 
     private void AddEnemyToCounter()
     {
-        if (needToKill)
+        if (enemyCounter != null)
         {
             enemyCounter.AddEnemy();
         }
@@ -39,9 +39,9 @@ public class EnemyHealth : MonoBehaviour
             GetComponent<NavMeshAgent>().enabled = false;
             GetComponent<CapsuleCollider>().enabled = false;
 
-            if (needToKill)
+            if (enemyCounter != null)
             {
-                enemyCounter.AddCount();
+                enemyCounter.Invoke("AddCount", addCountDelay);
             }
         }
         else

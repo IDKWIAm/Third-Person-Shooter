@@ -13,13 +13,17 @@ public class MoveToAnotherScene : MonoBehaviour
         }
         if (scene == 2)
         {
-            SceneManager.LoadScene("Main Scene");
+            SceneManager.LoadScene("Tutorial");
         }
         if (scene == 3)
         {
-            SceneManager.LoadScene("End");
+            SceneManager.LoadScene("Main Scene");
         }
         if (scene == 4)
+        {
+            SceneManager.LoadScene("End");
+        }
+        if (scene == 5)
         {
             Application.Quit();
         }

@@ -2,16 +2,16 @@
 
 public class PlayerHealth : MonoBehaviour
 {
-    public float health = 100;
+    public float maxHealth = 150;
+    public float health = 150;
     public RectTransform valueRectTransform;
 
     public GameObject gameplayUI;
     public GameObject gameOverScreen;
 
-    public float lerpSpeed = 1f;
+    //public float lerpSpeed = 1f;
 
-    private float _lerpValue;
-    private float _maxHealth;
+    //private float _lerpValue;
     private bool _dead;
     //private bool _lerpIncrease;
     //private bool _lerpDecrease;
@@ -21,7 +21,6 @@ public class PlayerHealth : MonoBehaviour
     private void Start()
     {
         _childAnim = transform.GetChild(0).GetComponent<Animator>();
-        _maxHealth = health;
         DrawHealthBar(0f);
     }
 
@@ -62,7 +61,7 @@ public class PlayerHealth : MonoBehaviour
     public void AddHealth(float healAmount)
     {
         health += healAmount;
-        health = Mathf.Clamp(health, 0, _maxHealth);
+        health = Mathf.Clamp(health, 0, maxHealth);
         //_lerpIncrease = true;
         DrawHealthBar(healAmount);
     }
@@ -81,7 +80,7 @@ public class PlayerHealth : MonoBehaviour
         //    valueRectTransform.anchorMax = Vector2.Lerp(new Vector2(health + changeValue / _maxHealth, 1), new Vector2(health / _maxHealth, 1), _lerpValue);
         //    _lerpDecrease = false;
         //}
-        valueRectTransform.anchorMax = new Vector2(health / _maxHealth, 1);
+        valueRectTransform.anchorMax = new Vector2(health / maxHealth, 1);
     }
 
     private void PlayerIsDead()
