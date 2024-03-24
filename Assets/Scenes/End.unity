@@ -5444,6 +5444,7 @@ GameObject:
   - component: {fileID: 609310669}
   - component: {fileID: 609310671}
   - component: {fileID: 609310670}
+  - component: {fileID: 609310672}
   m_Layer: 5
   m_Name: End UI
   m_TagString: Untagged
@@ -5515,6 +5516,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 609310668}
   m_CullTransparentMesh: 0
+--- !u!95 &609310672
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 609310668}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ae42a08ffe469644fa0838bccd731937, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &696878772
 GameObject:
   m_ObjectHideFlags: 0
@@ -5685,7 +5705,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 15.200592, y: -4.6784363}
+  m_AnchoredPosition: {x: 15.200562, y: -4.6784363}
   m_SizeDelta: {x: -81.9577, y: -9.313843}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &739197998
@@ -5944,7 +5964,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 15.200592, y: -4.6784363}
+  m_AnchoredPosition: {x: 15.200562, y: -4.6784363}
   m_SizeDelta: {x: -81.9577, y: -9.313843}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &813555674
@@ -6666,7 +6686,7 @@ GameObject:
   - component: {fileID: 1233353129}
   - component: {fileID: 1233353128}
   m_Layer: 5
-  m_Name: Text
+  m_Name: Return Button Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6884,7 +6904,7 @@ GameObject:
   - component: {fileID: 1287780576}
   - component: {fileID: 1287780579}
   m_Layer: 5
-  m_Name: Button
+  m_Name: Return Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7780,7 +7800,7 @@ GameObject:
   - component: {fileID: 1549696512}
   - component: {fileID: 1549696511}
   m_Layer: 5
-  m_Name: BG
+  m_Name: Return Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8179,7 +8199,7 @@ GameObject:
   - component: {fileID: 1856956910}
   - component: {fileID: 1856956909}
   m_Layer: 5
-  m_Name: Text
+  m_Name: Return Button Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8409,7 +8429,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 15.201, y: -126.3}
+  m_AnchoredPosition: {x: 15.200989, y: -126.3}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2121972057

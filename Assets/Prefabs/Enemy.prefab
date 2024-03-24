@@ -100,7 +100,7 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 360
-  m_StoppingDistance: 0
+  m_StoppingDistance: 0.5
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -142,7 +142,7 @@ MonoBehaviour:
     type: 3}
   viewAngle: 90
   rotationSpeed: 5
-  FireRate: 0.5
+  FireRate: 0.6
   waitingTime: 2
   attackRange: 50
   walkSpeed: 1.1
@@ -162,8 +162,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyCounter: {fileID: 0}
+  addCountDelay: 0
   health: 100
-  needToKill: 0
+  destroyDelay: 15
 --- !u!82 &1640066302471966253
 AudioSource:
   m_ObjectHideFlags: 0

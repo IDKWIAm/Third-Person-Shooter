@@ -12,6 +12,8 @@ public class PlayerController : MonoBehaviour
     public Animator aimAnimator;
     public GameObject pauseMenu;
 
+    //public AudioSource walkingSounds;
+
     public GameObject wasdText;
     public GameObject runText;
     public GameObject interactText;
@@ -25,6 +27,8 @@ public class PlayerController : MonoBehaviour
 
     private bool _walkTextChanged;
     private bool _runTextChanged;
+
+    //private bool _alreadyWalking;
 
 
     void Start()
@@ -133,15 +137,26 @@ public class PlayerController : MonoBehaviour
             _charAnimator?.SetFloat("Y", 0);
             isMoving = true;
         }
-        
+
         if (!isMoving)
         {
             _charAnimator?.SetBool("isMoving", false);
-        } else if (wasdText != null && !_walkTextChanged)
+            //walkingSounds.Stop();
+            //_alreadyWalking = false;
+        }
+        else
         {
-            wasdText.SetActive(false);
-            runText.SetActive(true);
-            _walkTextChanged = true;
+            if (wasdText != null && !_walkTextChanged)
+            {
+                wasdText.SetActive(false);
+                runText.SetActive(true);
+                _walkTextChanged = true;
+            }
+            //if (!_alreadyWalking)
+            //{
+            //    walkingSounds.PlayOneShot(walkingSounds.clip);
+            //    _alreadyWalking = true;
+            //}
         }
     }
 

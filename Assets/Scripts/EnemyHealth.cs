@@ -8,6 +8,8 @@ public class EnemyHealth : MonoBehaviour
 
     public float health = 100;
 
+    public float destroyDelay = 15;
+
     private Animator _enemyAnimator;
 
     private void Start()
@@ -39,6 +41,8 @@ public class EnemyHealth : MonoBehaviour
             GetComponent<NavMeshAgent>().enabled = false;
             GetComponent<CapsuleCollider>().enabled = false;
 
+            Invoke("destroy", destroyDelay);
+
             if (enemyCounter != null)
             {
                 enemyCounter.Invoke("AddCount", addCountDelay);
@@ -49,5 +53,10 @@ public class EnemyHealth : MonoBehaviour
             _enemyAnimator?.SetTrigger("Damage");
             _enemyAnimator?.SetInteger("DamageID", Random.Range(1, 3));
         }
+    }
+
+    private void destroy()
+    {
+        Destroy(gameObject);
     }
 }
