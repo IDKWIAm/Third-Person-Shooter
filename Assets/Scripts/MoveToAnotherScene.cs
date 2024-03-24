@@ -17,7 +17,7 @@ public class MoveToAnotherScene : MonoBehaviour
         }
         if (scene == 3)
         {
-            SceneManager.LoadScene("Main Scene");
+            SceneManager.LoadScene("Prologue");
         }
         if (scene == 4)
         {
