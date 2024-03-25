@@ -536,10 +536,10 @@ RectTransform:
   m_Father: {fileID: 3809222372422983016}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0.00012207031, y: 0}
-  m_SizeDelta: {x: -659.93506, y: -271.2182}
+  m_SizeDelta: {x: 678.06494, y: 328.7818}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6024873817257294004
 CanvasRenderer:
@@ -2883,8 +2883,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72eecc08b355b984084511622ad5d1eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shotSoundVolume: 1
-  fireRate: 0.08
+  shotSoundVolume: 0.6
+  fireRate: 0.12
   BulletPrefab: {fileID: 6830616854723291047, guid: 5e487fd0bc9097d45a2c89e4b4518f42,
     type: 3}
   bulletSource: {fileID: 8695786755337154182}

@@ -29,7 +29,7 @@ public class GrenadeCaster : MonoBehaviour
 
                 if (throwGrenadeText != null && _pickUpTextShowed)
                 {
-                    throwGrenadeText.SetActive(false);
+                    Destroy(throwGrenadeText);
                     finishText.SetActive(true);
                     if (tutorialEnemy != null)
                     {
@@ -42,7 +42,7 @@ public class GrenadeCaster : MonoBehaviour
         {
             if (pickUpText != null && !_grenadeTextChanged)
             {
-                pickUpText.SetActive(false);
+                Destroy(pickUpText);
                 throwGrenadeText.SetActive(true);
                 _pickUpTextShowed = true;
                 _grenadeTextChanged = true;

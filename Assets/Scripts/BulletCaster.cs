@@ -20,8 +20,6 @@ public class BulletCaster : MonoBehaviour
     private AudioSource _audioSource;
     private Animator _charAnimator;
 
-    private bool _aimTextChanged;
-    private bool _shootTextChanged;
     private bool _buttonIsDown;
 
     private void Start()
@@ -68,11 +66,10 @@ public class BulletCaster : MonoBehaviour
             AimAnimator.SetBool("Aiming", true);
             _charAnimator?.SetBool("Aiming", true);
 
-            if (aimText != null && _buttonIsDown && !_aimTextChanged)
+            if (aimText != null && _buttonIsDown)
             {
-                aimText.SetActive(false);
+                Destroy(aimText);
                 shootText.SetActive(true);
-                _aimTextChanged = true;
             }
         }
     }
@@ -83,9 +80,9 @@ public class BulletCaster : MonoBehaviour
 
         var bullet = Instantiate(BulletPrefab, bulletSource.position, bulletSource.rotation);
 
-        if (pickUpText != null && _aimTextChanged)
+        if (shootText != null && aimText == null)
         {
-            shootText.SetActive(false);
+            Destroy(shootText);
             if (!grenadeCaster._pickUpTextShowed)
             {
                 pickUpText.SetActive(true);

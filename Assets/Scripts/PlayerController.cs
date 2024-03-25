@@ -25,9 +25,6 @@ public class PlayerController : MonoBehaviour
     private Animator _charAnimator;
     private CharacterController _characterController;
 
-    private bool _walkTextChanged;
-    private bool _runTextChanged;
-
     //private bool _alreadyWalking;
 
 
@@ -95,11 +92,13 @@ public class PlayerController : MonoBehaviour
                 _moveVector += transform.forward * runMultiplier;
                 _charAnimator?.SetFloat("RunningOrNot", 1);
 
-                if (runText != null && !_runTextChanged)
+                if (runText != null)
                 {
-                    runText.SetActive(false);
-                    interactText.SetActive(true);
-                    _runTextChanged = true;
+                    Destroy(runText);
+                    if (interactText != null)
+                    {
+                        interactText.SetActive(true);
+                    }
                 }
             }
             else
@@ -146,11 +145,10 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            if (wasdText != null && !_walkTextChanged)
+            if (wasdText != null)
             {
-                wasdText.SetActive(false);
+                Destroy(wasdText);
                 runText.SetActive(true);
-                _walkTextChanged = true;
             }
             //if (!_alreadyWalking)
             //{

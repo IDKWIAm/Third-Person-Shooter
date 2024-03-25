@@ -19,6 +19,7 @@ public class GradualTextAppearance : MonoBehaviour
     private TextMeshProUGUI text;
     private float _timer;
     private bool _needAppear;
+    private bool skip;
     private void Start()
     {
         text = GetComponent<TextMeshProUGUI>();
@@ -34,6 +35,7 @@ public class GradualTextAppearance : MonoBehaviour
                 i++;
                 _needAppear = false;
                 tipText.SetActive(false);
+                skip = false;
                 if (i < messages.Length)
                 {
                     StartCoroutine(TextAppearance(messages[i], appearDelay));
@@ -44,6 +46,10 @@ public class GradualTextAppearance : MonoBehaviour
                     text.text = "";
                     SceneManager.LoadScene("Main Scene");
                 }
+            }
+            else
+            {
+                skip = true;
             }
         }
 
@@ -61,8 +67,16 @@ public class GradualTextAppearance : MonoBehaviour
     {
         for (int i = 0; i <= message.Length; i++)
         {
-            text.text = message.Substring(0, i);
-            yield return new WaitForSeconds(appearDelay);
+            if (!skip)
+            {
+                text.text = message.Substring(0, i);
+                yield return new WaitForSeconds(appearDelay);
+            }
+            else
+            {
+                text.text = message;
+                break;
+            }
         }
 
         textAppeared = true;
