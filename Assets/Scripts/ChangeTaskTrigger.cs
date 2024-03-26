@@ -12,6 +12,8 @@ public class ChangeTaskTrigger : MonoBehaviour
     public Animator taskManagerAnim;
     public GameObject gate;
 
+    public GameObject[] activateEnemies;
+
     private bool _notTriggered = true;
 
     private void OnTriggerEnter(Collider other)
@@ -27,6 +29,12 @@ public class ChangeTaskTrigger : MonoBehaviour
             Invoke("SetText", 1.5f);
 
             button.SetActive(true);
+
+            for (int i = 0; i < activateEnemies.Length; i++)
+            {
+                activateEnemies[i].SetActive(true);
+            }
+
             _notTriggered = false;
         }
     }

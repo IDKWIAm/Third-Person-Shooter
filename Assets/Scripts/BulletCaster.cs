@@ -4,6 +4,7 @@ public class BulletCaster : MonoBehaviour
 {
     public float shotSoundVolume = 1f;
     public float fireRate = 0.05f;
+    public float firingSpread;
 
     public Bullet BulletPrefab;
     public Transform bulletSource;
@@ -77,8 +78,8 @@ public class BulletCaster : MonoBehaviour
     private void Shoot()
     {
         _audioSource.PlayOneShot(_audioSource.clip, shotSoundVolume);
-
-        var bullet = Instantiate(BulletPrefab, bulletSource.position, bulletSource.rotation);
+        var rotation = bulletSource.rotation.eulerAngles + new Vector3(Random.Range(-firingSpread / 2, firingSpread / 2), Random.Range(-firingSpread / 2, firingSpread / 2), 0);
+        Instantiate(BulletPrefab, bulletSource.position, Quaternion.Euler(rotation));
 
         if (shootText != null && aimText == null)
         {

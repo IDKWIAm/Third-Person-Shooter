@@ -11,11 +11,14 @@ public class EnemyAI : MonoBehaviour
     public Transform bulletSource;
     public GameObject bulletPrefab;
 
-    public float viewAngle = 360;
+    public float viewAngle = 90f;
+    public float rangeOfVision = 500f;
     public float rotationSpeed = 5f;
     public float FireRate = 0.5f;
+    public float attackRange = 50f;
+    public float firingSpread;
+    public float damage = 10f;
     public float waitingTime = 0f;
-    public float attackRange = 20f;
     public float walkSpeed = 1.5f;
     public float runSpeed = 3.5f;
     public bool isGuard;
@@ -79,7 +82,7 @@ public class EnemyAI : MonoBehaviour
         if (Vector3.Angle(transform.forward, direction) < viewAngle)
         {
             RaycastHit hit;
-            if (Physics.Raycast(transform.position + Vector3.up * 1.5f, direction, out hit))
+            if (Physics.Raycast(transform.position + Vector3.up * 1.5f, direction, out hit, rangeOfVision))
             {
                 if (hit.collider.gameObject == player.gameObject)
                 {
@@ -175,7 +178,9 @@ public class EnemyAI : MonoBehaviour
     private void Fire()
     {
         _audioSource.PlayOneShot(_audioSource.clip, 0.6f);
-        Instantiate(bulletPrefab, bulletSource.position, bulletSource.rotation);
+        var rotation = bulletSource.rotation.eulerAngles + new Vector3(Random.Range(-firingSpread/2, firingSpread/2), Random.Range(-firingSpread / 2, firingSpread / 2), 0);
+        var bullet = Instantiate(bulletPrefab, bulletSource.position, Quaternion.Euler(rotation));
+        bullet.GetComponent<Bullet>().damage = damage;
         _childAnim?.SetTrigger("Attack");
     }
 
