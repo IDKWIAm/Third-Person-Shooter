@@ -38,6 +38,8 @@ public class BulletCaster : MonoBehaviour
         _timer -= Time.deltaTime;
         if (Input.GetMouseButton(0) && _charAnimator?.GetFloat("RunningOrNot") < 0.5)
         {
+            if (Time.timeScale == 0) return;
+
             _charAnimator?.SetFloat("ShootingOrNot", 1);
             if (_timer <= 0)
             {

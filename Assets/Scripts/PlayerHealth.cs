@@ -21,6 +21,16 @@ public class PlayerHealth : MonoBehaviour
     private void Start()
     {
         _childAnim = transform.GetChild(0).GetComponent<Animator>();
+
+        if (PlayerPrefs.HasKey("Health"))
+        {
+            health = PlayerPrefs.GetFloat("Health");
+            if (health < 15)
+            {
+                health = 30;
+            }
+        }
+
         DrawHealthBar(0f);
     }
 
@@ -78,7 +88,6 @@ public class PlayerHealth : MonoBehaviour
         //{
         //    _lerpValue = 1f;
         //    valueRectTransform.anchorMax = Vector2.Lerp(new Vector2(health + changeValue / _maxHealth, 1), new Vector2(health / _maxHealth, 1), _lerpValue);
-        //    _lerpDecrease = false;
         //}
         valueRectTransform.anchorMax = new Vector2(health / maxHealth, 1);
     }

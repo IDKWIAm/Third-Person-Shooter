@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviour
     private Vector3 _moveVector;
     private float _fallVelocity = 0f;
     private bool isMoving = false;
+    private bool _hasSpawned;
 
     private Animator _charAnimator;
     private CharacterController _characterController;
@@ -30,6 +31,7 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+        PlaceCharacter();
         InitAnimator();
         InitCharacterController();
         LockCursor();
@@ -50,13 +52,17 @@ public class PlayerController : MonoBehaviour
     }
     void FixedUpdate()
     {
-        _characterController.Move(_moveVector * speed * Time.fixedDeltaTime);
+        if (_hasSpawned)
+        {
+            _characterController.Move(_moveVector * speed * Time.fixedDeltaTime);
 
-        _fallVelocity += gravity * Time.fixedDeltaTime;
-        _characterController.Move(Vector3.down * _fallVelocity * Time.fixedDeltaTime);
+            _fallVelocity += gravity * Time.fixedDeltaTime;
+            _characterController.Move(Vector3.down * _fallVelocity * Time.fixedDeltaTime);
 
-        if (_characterController.isGrounded)
-            _fallVelocity = 0;
+            if (_characterController.isGrounded)
+                _fallVelocity = 0;
+        }
+        
     }
 
     private void InitAnimator()
@@ -172,12 +178,23 @@ public class PlayerController : MonoBehaviour
 
     private void OpenPauseMenu()
     {
-        gameObject.GetComponent<PlayerController>().enabled = false;
-        gameObject.GetComponent<CameraRotation>().enabled = false;
-        gameObject.GetComponent<BulletCaster>().enabled = false;
-        gameObject.GetComponent<GrenadeCaster>().enabled = false;
         pauseMenu.GetComponent<Animator>().SetTrigger("WindowAppear");
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
+        Time.timeScale = 0;
+    }
+
+    private void PlaceCharacter()
+    {
+        if (PlayerPrefs.HasKey("Spawn Point Pos X") && PlayerPrefs.HasKey("Spawn Point Pos Y") && PlayerPrefs.HasKey("Spawn Point Pos Z"))
+        {
+            transform.position = new Vector3(PlayerPrefs.GetFloat("Spawn Point Pos X"), PlayerPrefs.GetFloat("Spawn Point Pos Y"), PlayerPrefs.GetFloat("Spawn Point Pos Z"));
+        }
+        Invoke("HasSpawned", 0.05f);
+    }
+
+    private void HasSpawned()
+    {
+        _hasSpawned = true;
     }
 }

@@ -23,17 +23,21 @@ public class EnemyAI : MonoBehaviour
     public float runSpeed = 3.5f;
     public bool isGuard;
     public bool isPatrolman = true;
+    //public bool debug;
 
-    private int point;
+    private int _point;
     private bool _isPlayerNoticed;
     private bool _isWaiting;
     private float _timer;
+    private float _distance;
+    private bool _playerNoticedLastFrame;
 
     private PlayerHealth _playerHealth;
     private NavMeshAgent _navMeshAgent;
     private Animator _childAnim;
     private GameObject _player;
     private AudioSource _audioSource;
+    private Transform _destinationTarget;
 
     void Start()
     {
@@ -43,6 +47,7 @@ public class EnemyAI : MonoBehaviour
 
     void Update()
     {
+        CanculateDistanceUpdate();
         NoticePlayerUpdate();
         ChaseUpdate();
         AttackUpdate();
@@ -60,12 +65,13 @@ public class EnemyAI : MonoBehaviour
 
     private void PickNewPatrolPoint()
     {
-        var oldPoint = point;
-        while (isPatrolman && point == oldPoint)
+        var oldPoint = _point;
+        while (isPatrolman && _point == oldPoint)
         {
-            point = Random.Range(0, patrolPoints.Count);
+            _point = Random.Range(0, patrolPoints.Count);
         }
-        
+        _destinationTarget = patrolPoints[_point];
+
         _navMeshAgent.speed = walkSpeed;
         Invoke("DisableWaiting", 2);
     }
@@ -98,16 +104,24 @@ public class EnemyAI : MonoBehaviour
         if (_isPlayerNoticed && !isGuard)
         {
             _navMeshAgent.destination = player.transform.position;
+            _destinationTarget = player.transform;
+            _playerNoticedLastFrame = true;
         }
         else
         {
-            _navMeshAgent.destination = patrolPoints[point].position;
+            _navMeshAgent.destination = patrolPoints[_point].position;
+            _destinationTarget = patrolPoints[_point];
+            if (_playerNoticedLastFrame)
+            {
+                DisableWaiting();
+                _playerNoticedLastFrame = false;
+            }
         }
     }
 
     private void PatrolUpdate()
     {
-        if (_navMeshAgent.remainingDistance <= _navMeshAgent.stoppingDistance)
+        if (_distance <= _navMeshAgent.stoppingDistance)
         {
             if (!_isWaiting)
             {
@@ -127,11 +141,7 @@ public class EnemyAI : MonoBehaviour
 
         if (_isPlayerNoticed)
         {
-            var heading = _player.transform.position - transform.position;
-
-            var distance = heading.magnitude;
-
-            if (distance <= attackRange)
+            if (_distance <= attackRange)
             {
                 Vector3 direction = (player.transform.position - transform.position).normalized;
                 Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
@@ -187,5 +197,10 @@ public class EnemyAI : MonoBehaviour
     private void DisableWaiting()
     {
         _isWaiting = false;
+    }
+
+    private void CanculateDistanceUpdate()
+    {
+        _distance = (_destinationTarget.position - transform.position).magnitude;
     }
 }

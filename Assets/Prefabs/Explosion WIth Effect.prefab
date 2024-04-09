@@ -23638,6 +23638,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 70
+  playerResistance: 70
   delay: 0.35
 --- !u!54 &-8740954959919513834
 Rigidbody:

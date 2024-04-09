@@ -1,9 +1,9 @@
-﻿using System.Threading;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class ExplotionWithEffect : MonoBehaviour
 {
     public float damage = 50f;
+    public float playerResistance = 30;
     public float delay = 1f;
 
     private void Start()
@@ -16,7 +16,7 @@ public class ExplotionWithEffect : MonoBehaviour
         var playerHealth = other.GetComponent<PlayerHealth>();
         if (playerHealth != null)
         {
-            playerHealth.DealDamage(damage);
+            playerHealth.DealDamage(damage * (1f - playerResistance / 100));
         }
 
         var enemyHealth = other.GetComponent<EnemyHealth>();

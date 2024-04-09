@@ -220,6 +220,7 @@ public class InteractiveButton : MonoBehaviour
     private void Execute()
     {
         action?.Invoke();
+        PlayerPrefs.SetString(gameObject.name, "Pressed");
         if (!destroyAfterExecute) return;
         Destroy(gameObject);
     }

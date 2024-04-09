@@ -16,6 +16,14 @@ public class GrenadeCaster : MonoBehaviour
     public bool _pickUpTextShowed;
     private bool _grenadeTextChanged;
 
+    private void Start()
+    {
+        if (PlayerPrefs.HasKey("Grenade Amount"))
+        {
+            grenadeAmount = PlayerPrefs.GetInt("Grenade Amount");
+        }
+    }
+
     void Update()
     {
         if (Input.GetMouseButtonDown(2))
